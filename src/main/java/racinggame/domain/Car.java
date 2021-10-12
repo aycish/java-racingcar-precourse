@@ -1,9 +1,12 @@
 package racinggame.domain;
 
-import java.net.HttpCookie;
+import nextstep.utils.Randoms;
 
-public class Car {
+public class Car implements Comparable<Car> {
+
 	private static final int MOVE_CRITERION = 4;
+	private static final int START_INCLUSIVE = 0;
+	private static final int END_INCLUSIVE = 9;
 
 	private final Name carName;
 	private final Position carPosition;
@@ -13,22 +16,30 @@ public class Car {
 		this.carPosition = new Position();
 	}
 
-	public void goForward(int randomNumber) {
-		if (judge(randomNumber)) {
-			carPosition.goForward();
+	public void goForward() {
+		if (judge(Randoms.pickNumberInRange(START_INCLUSIVE,END_INCLUSIVE))) {
+			this.carPosition.goForward();
 		}
 	}
 
-	public Name getName() {
-		return carName;
+	public String getName() {
+		return this.carName.getString();
 	}
 
-	public Position getPosition() {
-		return carPosition;
+	public int getPosition() {
+		return this.carPosition.getValue();
+	}
+
+	public boolean isSamePosition(Car car) {
+		return this.getPosition() == car.getPosition();
 	}
 
 	private static boolean judge(int randomNumber) {
 		return randomNumber >= MOVE_CRITERION;
 	}
 
+	@Override
+	public int compareTo(Car o) {
+		return this.getPosition() - o.getPosition();
+	}
 }

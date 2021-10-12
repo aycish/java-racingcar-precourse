@@ -5,7 +5,6 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
 import java.util.Arrays;
-import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,8 +19,8 @@ public class CarsTest {
 	@Test
 	@DisplayName("자동차_그룹_생성_검증")
 	void createCarsTest() {
-		Cars cars = new Cars(Arrays.asList("pobi","tobi","crong"));
-		assertThat(cars.getCars().size()).isEqualTo(3);
+		Cars cars = new Cars(Arrays.asList("pobi", "tobi", "crong"));
+		assertThat(cars.getWinners()).contains("pobi", "tobi", "crong");
 	}
 
 	@Test
@@ -29,14 +28,14 @@ public class CarsTest {
 	void createCarsTest2() {
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> {
-				Cars cars = new Cars(Arrays.asList("wrongName","longer"));
+				Cars cars = new Cars(Arrays.asList("wrongName", "longer", ""));
 			});
 	}
 
 	@Test
 	@DisplayName("우승자_선별_테스트")
 	void getWinnersTest() {
-		Cars cars = new Cars(Arrays.asList("pobi","tobi"));
+		Cars cars = new Cars(Arrays.asList("pobi", "tobi"));
 
 		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
 			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
@@ -44,16 +43,13 @@ public class CarsTest {
 			cars.goForwardAll();
 		}
 
-		List<Car> winners = cars.getWinners();
-		assertThat(winners.size()).isEqualTo(1);
-		assertThat(winners.get(0).getName().getString()).isEqualTo("tobi");
-
+		assertThat(cars.getWinners()).contains("tobi").doesNotContain("pobi");
 	}
 
 	@Test
 	@DisplayName("다중_우승자_선별_테스트")
 	void getWinnersTest2() {
-		Cars cars = new Cars(Arrays.asList("pobi","tobi","crong"));
+		Cars cars = new Cars(Arrays.asList("pobi", "tobi", "crong"));
 
 		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
 			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
@@ -61,10 +57,7 @@ public class CarsTest {
 			cars.goForwardAll();
 		}
 
-		List<Car> winners = cars.getWinners();
-		assertThat(winners.size()).isEqualTo(2);
-		assertThat(winners.get(0).getName().getString()).isEqualTo("tobi");
-		assertThat(winners.get(1).getName().getString()).isEqualTo("crong");
+		assertThat(cars.getWinners()).contains("tobi", "crong").doesNotContain("pobi");
 	}
 
 }

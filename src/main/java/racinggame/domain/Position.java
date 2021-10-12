@@ -2,7 +2,7 @@ package racinggame.domain;
 
 public class Position {
 
-	private Integer value = 0;
+	private Integer value;
 
 	public Position () {
 		value = 0;
@@ -16,14 +16,4 @@ public class Position {
 		value ++;
 	}
 
-	public Position getPositionAhead(Position position) {
-		if (getValue() > position.getValue()) {
-			return this;
-		}
-		return position;
-	}
-
-	public boolean isSamePosition(Position position) {
-		return getValue() == position.getValue();
-	}
 }
