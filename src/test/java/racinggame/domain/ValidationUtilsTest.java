@@ -25,7 +25,7 @@ public class ValidationUtilsTest {
 
 	@ParameterizedTest
 	@DisplayName("시행_횟수_정상_입력_검증")
-	@ValueSource(strings = {"5", "123"})
+	@ValueSource(strings = {"5", "123", "10", "1265089"})
 	void trialInputTest(String userInput) {
 		assertThat(ValidationUtils.checkTrial(userInput)).isTrue();
 	}
