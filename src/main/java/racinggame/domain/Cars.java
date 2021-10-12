@@ -8,9 +8,10 @@ public class Cars {
 
 	List<Car> cars = new ArrayList<>();
 
-	public Cars(List<String> names) {
+	public Cars(String carNames) {
+		String[] names = carNames.split(",");
 		for (String name : names) {
-			cars.add(new Car(name));
+			cars.add(new Car(name.trim()));
 		}
 	}
 
@@ -29,6 +30,14 @@ public class Cars {
 		}
 
 		return String.join(",", winners);
+	}
+
+	public String getCurrentResult() {
+		List<String> results = new ArrayList<>();
+		for(Car car : cars) {
+			results.add(car.toString());
+		}
+		return String.join("\n", results);
 	}
 
 	private void addSamePositionCar(List<String> winners, Car leadCar, Car targetCar) {

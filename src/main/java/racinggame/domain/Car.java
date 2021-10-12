@@ -38,6 +38,20 @@ public class Car implements Comparable<Car> {
 		return randomNumber >= MOVE_CRITERION;
 	}
 
+	private String getPositionBar() {
+		String positionBar = "";
+
+		for(int i = 0; i < this.getPosition(); i++ ) {
+			positionBar += "-";
+		}
+		return positionBar;
+	}
+
+	@Override
+	public String toString() {
+		return this.getName() + " : " + this.getPositionBar();
+	}
+
 	@Override
 	public int compareTo(Car o) {
 		return this.getPosition() - o.getPosition();
