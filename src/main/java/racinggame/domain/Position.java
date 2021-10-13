@@ -4,7 +4,7 @@ public class Position {
 
 	private Integer value;
 
-	public Position () {
+	public Position() {
 		value = 0;
 	}
 
@@ -13,7 +13,7 @@ public class Position {
 	}
 
 	public void goForward() {
-		value ++;
+		value++;
 	}
 
 }

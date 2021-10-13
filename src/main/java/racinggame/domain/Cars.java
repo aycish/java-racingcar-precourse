@@ -16,7 +16,7 @@ public class Cars {
 	}
 
 	public void goForwardAll() {
-		for(Car car : cars) {
+		for (Car car : cars) {
 			car.goForward();
 		}
 	}
@@ -25,7 +25,7 @@ public class Cars {
 		List<String> winners = new ArrayList<>();
 		Car leadCar = getLeadCar();
 
-		for(Car car : cars) {
+		for (Car car : cars) {
 			addSamePositionCar(winners, leadCar, car);
 		}
 
@@ -34,7 +34,7 @@ public class Cars {
 
 	public String getCurrentResult() {
 		List<String> results = new ArrayList<>();
-		for(Car car : cars) {
+		for (Car car : cars) {
 			results.add(car.toString());
 		}
 		return String.join("\n", results);

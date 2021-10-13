@@ -9,7 +9,7 @@ public class Trial {
 		this.trial = Integer.parseInt(trial);
 	}
 
-	public static Trial createTrial(String userInputTrial){
+	public static Trial createTrial(String userInputTrial) {
 		if (!ValidationUtils.checkTrial(userInputTrial)) {
 			throw new IllegalArgumentException();
 		}

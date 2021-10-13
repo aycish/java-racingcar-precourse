@@ -8,7 +8,7 @@ public class Name {
 		this.name = name;
 	}
 
-	public static Name createName(String userInputName){
+	public static Name createName(String userInputName) {
 		if (!ValidationUtils.checkNameLength(userInputName)) {
 			throw new IllegalArgumentException();
 		}

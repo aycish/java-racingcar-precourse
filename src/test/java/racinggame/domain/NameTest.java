@@ -11,7 +11,7 @@ public class NameTest {
 	@ParameterizedTest
 	@DisplayName("이름_5글자_초과_검증")
 	@ValueSource(strings = {"javajigi", "aycish", "wrongName"})
-	void 이름_5글자_초과_검증(String userInput) {
+	void verifyLongerNameCase(String userInput) {
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> {
 				Name.createName(userInput);
@@ -21,7 +21,7 @@ public class NameTest {
 	@ParameterizedTest
 	@DisplayName("이름_생성_검증")
 	@ValueSource(strings = {"woni", "pobi", "crong"})
-	void 이름_생성_검증(String userInput) {
+	void verifyCreatingName(String userInput) {
 		Name name  = Name.createName(userInput);
 		assertThat(name.getString()).isEqualTo(userInput);
 	}

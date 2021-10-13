@@ -17,7 +17,7 @@ public class Car implements Comparable<Car> {
 	}
 
 	public void goForward() {
-		if (judge(Randoms.pickNumberInRange(START_INCLUSIVE,END_INCLUSIVE))) {
+		if (judge(Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE))) {
 			this.carPosition.goForward();
 		}
 	}
@@ -41,9 +41,10 @@ public class Car implements Comparable<Car> {
 	private String getPositionBar() {
 		String positionBar = "";
 
-		for(int i = 0; i < this.getPosition(); i++ ) {
+		for (int i = 0; i < this.getPosition(); i++) {
 			positionBar += "-";
 		}
+
 		return positionBar;
 	}
 
@@ -53,7 +54,7 @@ public class Car implements Comparable<Car> {
 	}
 
 	@Override
-	public int compareTo(Car o) {
-		return this.getPosition() - o.getPosition();
+	public int compareTo(Car car) {
+		return this.getPosition() - car.getPosition();
 	}
 }

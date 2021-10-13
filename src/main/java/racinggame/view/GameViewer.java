@@ -11,11 +11,11 @@ public final class GameViewer {
 	}
 
 	public static void printWrongNameErrorMessage() {
-		System.out.println("[ERROR] 이름은 5글자 이하의 문자만 가능합니다.");
+		System.out.println("[ERROR] 이름은 1글자 이상, 5글자 이하의 문자만 가능합니다.");
 	}
 
 	public static void printWrongTrialErrorMessage() {
-		System.out.println("[ERROR] 시행 횟수는 숫자만 입력 가능합니다.");
+		System.out.println("[ERROR] 시행 횟수는 1 이상의 숫자만 입력 가능합니다.");
 	}
 
 	public static void printCurrentResult(String result) {

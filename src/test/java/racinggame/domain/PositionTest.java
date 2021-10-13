@@ -17,13 +17,13 @@ public class PositionTest {
 
 	@Test
 	@DisplayName("초기_위치_검증")
-	void 초기_위치_검증() {
+	void verifyIntializingPosition() {
 		assertThat(position.getValue()).isEqualTo(0);
 	}
 
 	@Test
 	@DisplayName("전진_검증")
-	void 전진_테스트() {
+	void verifyGoingForward() {
 		position.goForward();
 		assertThat(position.getValue()).isEqualTo(1);
 	}

@@ -33,11 +33,11 @@ public class CarsTest {
 	@Test
 	@DisplayName("우승자_선별_테스트")
 	void getWinnersTest() {
-		Cars cars =new  Cars("pobi,tobi");
+		Cars cars = new Cars("pobi,tobi");
 
 		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
 			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-				.thenReturn(STOP,MOVING_FORWARD);
+				.thenReturn(STOP, MOVING_FORWARD);
 			cars.goForwardAll();
 		}
 
@@ -51,7 +51,7 @@ public class CarsTest {
 
 		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
 			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-				.thenReturn(STOP,MOVING_FORWARD,MOVING_FORWARD);
+				.thenReturn(STOP, MOVING_FORWARD, MOVING_FORWARD);
 			cars.goForwardAll();
 		}
 

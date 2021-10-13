@@ -1,11 +1,30 @@
 plugins {
     id 'java'
+    id 'org.ec4j.editorconfig' version '0.0.3'
+    id 'checkstyle'
 }
+
+editorconfig {
+    excludes = ['public', 'build']
+}
+
+checkstyle {
+    maxWarnings = 0
+    configFile = file("${rootDir}/naver-checkstyle-rules.xml")
+    configProperties = ["suppressionFile" : "${rootDir}/naver-checkstyle-suppressions.xml"]
+    toolVersion ="8.24"
+}
+
+check.dependsOn editorconfigCheck
 
 group 'camp.nextstep.edu'
 version '1.0.0'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
 
 repositories {
     mavenCentral()
